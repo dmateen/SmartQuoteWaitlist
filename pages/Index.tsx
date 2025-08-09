@@ -85,7 +85,7 @@ const Hero = () => {
           </div>
           <div ref={glowRef} className="pointer-glow" aria-hidden />
 
-          <div className="container relative z-10 mx-auto grid gap-10 py-16 animate-entry md:grid-cols-2 md:py-24">
+          <div className="container relative z-10 mx-auto grid gap-10 py-16 animate-entry md:grid-cols-2 md:py-24 px-4 md:px-6">
               <div className="flex flex-col justify-center">
                   <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
                       Turn Roofing Visitors into Ready-to-Buy Leads—With Instant Quotes.
@@ -110,7 +110,7 @@ const Hero = () => {
                       </div>
                   </div>
               </div>
-              <div>
+              <div className="flex justify-center items-start">
                   <QuotePreview />
               </div>
           </div>

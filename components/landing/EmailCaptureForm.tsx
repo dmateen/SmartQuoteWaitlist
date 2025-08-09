@@ -67,6 +67,10 @@ export const EmailCaptureForm = ({
       }
       
       setIsSubmitted(true);
+      
+      // Mark that user has signed up in session storage
+      sessionStorage.setItem('emailCaptured', 'true');
+      
       toast({
         title: "Success!",
         description: "You've been added to our early access list.",

@@ -8,24 +8,34 @@ import { Gift } from 'lucide-react';
 export const ExitIntentModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [hasSignedUp, setHasSignedUp] = useState(false);
 
   useEffect(() => {
+    // Check session storage for previous modal display and signup status
+    const modalShown = sessionStorage.getItem('exitModalShown') === 'true';
+    const userSignedUp = sessionStorage.getItem('emailCaptured') === 'true';
+    
+    setHasShown(modalShown);
+    setHasSignedUp(userSignedUp);
+
     let timeoutId: NodeJS.Timeout;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      // Only trigger if mouse leaves from the top of the page
-      if (e.clientY <= 0 && !hasShown) {
+      // Only trigger if mouse leaves from the top of the page, hasn't been shown, and user hasn't signed up
+      if (e.clientY <= 0 && !hasShown && !hasSignedUp && !modalShown && !userSignedUp) {
         setIsOpen(true);
         setHasShown(true);
+        sessionStorage.setItem('exitModalShown', 'true');
       }
     };
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden' && !hasShown) {
+      if (document.visibilityState === 'hidden' && !hasShown && !hasSignedUp && !modalShown && !userSignedUp) {
         // Small delay to avoid false positives
         timeoutId = setTimeout(() => {
           setIsOpen(true);
           setHasShown(true);
+          sessionStorage.setItem('exitModalShown', 'true');
         }, 100);
       }
     };
@@ -39,7 +49,7 @@ export const ExitIntentModal = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [hasShown]);
+  }, [hasShown, hasSignedUp]);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
