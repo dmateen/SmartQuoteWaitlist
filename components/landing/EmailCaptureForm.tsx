@@ -71,6 +71,9 @@ export const EmailCaptureForm = ({
       // Mark that user has signed up in session storage
       sessionStorage.setItem('emailCaptured', 'true');
       
+      // Dispatch custom event to notify other components immediately
+      window.dispatchEvent(new CustomEvent('emailCaptured'));
+      
       toast({
         title: "Success!",
         description: "You've been added to our early access list.",
