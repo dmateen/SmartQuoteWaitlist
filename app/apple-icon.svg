@@ -1,0 +1,51 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with rounded corners for iOS -->
+  <rect width="180" height="180" rx="40" fill="#2563eb"/>
+  
+  <!-- Roof structure -->
+  <path d="M90 25L150 75H30L90 25Z" fill="#ffffff" stroke="#f1f5f9" stroke-width="3" stroke-linejoin="round"/>
+  
+  <!-- House base -->
+  <rect x="45" y="75" width="90" height="70" fill="#f8fafc" stroke="#f1f5f9" stroke-width="2"/>
+  
+  <!-- Door -->
+  <rect x="80" y="105" width="20" height="40" fill="#374151" rx="3"/>
+  
+  <!-- Door handle -->
+  <circle cx="93" cy="125" r="2" fill="#9ca3af"/>
+  
+  <!-- Left windows -->
+  <rect x="52" y="82" width="15" height="15" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+  <rect x="52" y="105" width="15" height="15" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Right windows -->
+  <rect x="113" y="82" width="15" height="15" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+  <rect x="113" y="105" width="15" height="15" fill="#3b82f6" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Window crosses -->
+  <line x1="59.5" y1="82" x2="59.5" y2="97" stroke="#1e40af" stroke-width="1"/>
+  <line x1="52" y1="89.5" x2="67" y2="89.5" stroke="#1e40af" stroke-width="1"/>
+  <line x1="59.5" y1="105" x2="59.5" y2="120" stroke="#1e40af" stroke-width="1"/>
+  <line x1="52" y1="112.5" x2="67" y2="112.5" stroke="#1e40af" stroke-width="1"/>
+  
+  <line x1="120.5" y1="82" x2="120.5" y2="97" stroke="#1e40af" stroke-width="1"/>
+  <line x1="113" y1="89.5" x2="128" y2="89.5" stroke="#1e40af" stroke-width="1"/>
+  <line x1="120.5" y1="105" x2="120.5" y2="120" stroke="#1e40af" stroke-width="1"/>
+  <line x1="113" y1="112.5" x2="128" y2="112.5" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Roof ridge -->
+  <line x1="30" y1="75" x2="150" y2="75" stroke="#f1f5f9" stroke-width="3"/>
+  
+  <!-- Foundation -->
+  <rect x="40" y="145" width="100" height="8" fill="#f1f5f9" opacity="0.8"/>
+  
+  <!-- Roof texture -->
+  <line x1="45" y1="65" x2="52" y2="50" stroke="#f1f5f9" stroke-width="2" opacity="0.6"/>
+  <line x1="65" y1="40" x2="75" y2="50" stroke="#f1f5f9" stroke-width="2" opacity="0.6"/>
+  <line x1="105" y1="50" x2="115" y2="40" stroke="#f1f5f9" stroke-width="2" opacity="0.6"/>
+  <line x1="128" y1="50" x2="135" y2="65" stroke="#f1f5f9" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Chimney -->
+  <rect x="115" y="35" width="8" height="25" fill="#6b7280" stroke="#4b5563" stroke-width="1"/>
+  <rect x="113" y="32" width="12" height="4" fill="#4b5563"/>
+</svg>

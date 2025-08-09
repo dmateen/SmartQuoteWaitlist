@@ -54,10 +54,16 @@ export const EmailCaptureForm = ({
         }),
       });
 
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an invalid response. Please check your environment configuration.');
+      }
+
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to save email');
+        throw new Error(result.error || result.details || 'Failed to save email');
       }
       
       setIsSubmitted(true);

@@ -47,11 +47,18 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
+  // Don't redirect API routes or public pages
+  const isApiRoute = request.nextUrl.pathname.startsWith("/api");
+  const isPublicPage = request.nextUrl.pathname === "/";
+  const isAuthPage = request.nextUrl.pathname.startsWith("/auth");
+  const isLoginPage = request.nextUrl.pathname.startsWith("/login");
+  
   if (
-    request.nextUrl.pathname !== "/" &&
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
+    !isApiRoute &&
+    !isPublicPage &&
+    !isAuthPage &&
+    !isLoginPage &&
+    !user
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
