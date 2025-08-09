@@ -3,13 +3,14 @@ import Image from 'next/image';
 // Note: Replace this with actual hero image URL or import
 const heroImg = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'; // Roofing image from Unsplash
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Input } from '@/components/ui/input';
 import { EmailCaptureForm } from '@/components/landing/EmailCaptureForm';
 import { StickyBanner } from '@/components/landing/StickyBanner';
 import { ExitIntentModal } from '@/components/landing/ExitIntentModal';
-import { Shield, Star, Mail, CheckCircle, Gauge, Zap, LineChart, Layers, DollarSign, MessageCircle, Cog, ArrowRight } from 'lucide-react';
+import { QuotePreview } from '@/components/QuotePreview';
+import { Shield, Mail, CheckCircle, Gauge, Zap, LineChart, Layers, DollarSign, MessageCircle, Cog, ArrowRight } from 'lucide-react';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 import { cn } from '@/lib/utils';
 
 type NavbarProps = { active?: string; scrolled?: boolean };
@@ -29,7 +30,7 @@ const Navbar = ({ active, scrolled }: NavbarProps) => (
         {/* <span className="inline-block h-6 w-6 rounded-md bg-accent" aria-hidden /> */}
         SmartQuote.ai
       </a>
-      <div className="hidden items-center gap-6 md:flex">
+      <div className="hidden items-center gap-4 md:flex">
         {links.map(({ id, label }) => (
           <a
             key={id}
@@ -40,11 +41,13 @@ const Navbar = ({ active, scrolled }: NavbarProps) => (
             {label}
           </a>
         ))}
+        <ThemeSwitcher />
         <Button asChild variant="cta" size="lg">
           <a href="#pricing" aria-label="Get early access">Get Early Access</a>
         </Button>
       </div>
-      <div className="md:hidden">
+      <div className="flex items-center gap-2 md:hidden">
+        <ThemeSwitcher />
         <Button asChild variant="cta" size="sm">
           <a href="#pricing" aria-label="Get early access">Get Early Access</a>
         </Button>
@@ -108,57 +111,7 @@ const Hero = () => {
                   </div>
               </div>
               <div>
-                  <Card className="mx-auto max-w-md rounded-xl shadow-sm transition-all hover:shadow-md hover-scale">
-                      <CardHeader>
-                          <CardTitle className="flex items-center justify-between">
-                              Instant Quote{' '}
-                              <span className="text-sm font-normal text-muted-foreground">
-                                  as low as $/mo
-                              </span>
-                          </CardTitle>
-                          <CardDescription>
-                              Give homeowners a fast, transparent price range.
-                          </CardDescription>
-                      </CardHeader>
-                      <CardContent className="grid gap-4">
-                          <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                  <label className="mb-1 block text-sm text-muted-foreground">
-                                      Roof area (sq ft)
-                                  </label>
-                                  <Input placeholder="2200" disabled />
-                              </div>
-                              <div>
-                                  <label className="mb-1 block text-sm text-muted-foreground">
-                                      Roof type
-                                  </label>
-                                  <Input placeholder="Architectural shingles" disabled />
-                              </div>
-                              <div>
-                                  <label className="mb-1 block text-sm text-muted-foreground">
-                                      Tear-off
-                                  </label>
-                                  <Input placeholder="1 layer" disabled />
-                              </div>
-                              <div>
-                                  <label className="mb-1 block text-sm text-muted-foreground">
-                                      Urgency
-                                  </label>
-                                  <Input placeholder="Within 2 weeks" disabled />
-                              </div>
-                          </div>
-                          <div className="rounded-lg border bg-muted/30 p-3">
-                              <p className="text-sm text-muted-foreground">Estimated range</p>
-                              <p className="text-2xl font-semibold">$11,400 – $13,800</p>
-                              <p className="text-xs text-muted-foreground">
-                                  Good / Better / Best options shown at checkout
-                              </p>
-                          </div>
-                          <Button variant="cta" className="w-full" size="lg">
-                              See Sample Quote
-                          </Button>
-                      </CardContent>
-                  </Card>
+                  <QuotePreview />
               </div>
           </div>
       </section>
@@ -183,7 +136,7 @@ const Pain = () => (
         ['Slow follow-up', 'Teams are on roofs, not in inboxes.'],
         ['No CRM sync', 'Leads scattered across email/forms/notes.'],
       ].map(([title, desc]) => (
-        <Card key={title} className="rounded-xl transition-all hover:shadow hover-scale">
+        <Card key={title} className="rounded-xl transition-all hover:shadow hover-scale shadow-lg shadow-red-500/20 border-red-100 dark:border-red-900/30">
           <CardHeader>
             <CardTitle className="text-lg">{title}</CardTitle>
             <CardDescription>{desc}</CardDescription>
@@ -207,7 +160,7 @@ const Solution = () => (
         ['You get a pre-qualified lead', 'Name + email + job details → CRM/inbox.', <Mail key="i2"/>],
         ['You close more jobs', 'Talk to ready-to-buy homeowners.', <CheckCircle key="i3"/>],
       ].map(([title, desc, icon]) => (
-        <Card key={title as string} className="rounded-xl transition-all hover:shadow hover-scale">
+        <Card key={title as string} className="rounded-xl transition-all hover:shadow hover-scale shadow-lg shadow-green-500/20 border-green-100 dark:border-green-900/30">
           <CardHeader className="flex-row items-center gap-3">
             <div className="rounded-md bg-accent p-2 text-accent-foreground">{icon}</div>
             <div>
