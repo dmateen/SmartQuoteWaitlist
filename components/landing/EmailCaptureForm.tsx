@@ -38,10 +38,27 @@ export const EmailCaptureForm = ({
     setIsSubmitting(true);
     
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log('Email captured:', { email, eventId });
+      const response = await fetch('/api/email-leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          eventId,
+          metadata: {
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            url: window.location.href,
+          }
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to save email');
+      }
       
       setIsSubmitted(true);
       toast({
@@ -50,10 +67,11 @@ export const EmailCaptureForm = ({
       });
       
       setEmail('');
-    } catch {
+    } catch (error) {
+      console.error('Email submission error:', error);
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
         variant: "destructive"
       });
     } finally {
