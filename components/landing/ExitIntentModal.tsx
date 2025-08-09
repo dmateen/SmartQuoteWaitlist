@@ -7,8 +7,6 @@ import { Gift } from 'lucide-react';
 
 export const ExitIntentModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
-  const [hasSignedUp, setHasSignedUp] = useState(false);
 
   useEffect(() => {
     // Check session storage for previous modal display and signup status
@@ -16,13 +14,11 @@ export const ExitIntentModal = () => {
       const modalShown = sessionStorage.getItem('exitModalShown') === 'true';
       const userSignedUp = sessionStorage.getItem('emailCaptured') === 'true';
       
-      setHasShown(modalShown);
-      setHasSignedUp(userSignedUp);
-      
       return { modalShown, userSignedUp };
     };
     
-    const { modalShown: initialModalShown, userSignedUp: initialUserSignedUp } = checkStorageValues();
+    // Initialize storage values
+    checkStorageValues();
 
     let timeoutId: NodeJS.Timeout;
 
@@ -33,7 +29,6 @@ export const ExitIntentModal = () => {
       // Only trigger if mouse leaves from the top of the page, hasn't been shown, and user hasn't signed up
       if (e.clientY <= 0 && !modalShown && !userSignedUp) {
         setIsOpen(true);
-        setHasShown(true);
         sessionStorage.setItem('exitModalShown', 'true');
       }
     };
@@ -49,7 +44,6 @@ export const ExitIntentModal = () => {
           const { modalShown: finalModalShown, userSignedUp: finalUserSignedUp } = checkStorageValues();
           if (!finalModalShown && !finalUserSignedUp) {
             setIsOpen(true);
-            setHasShown(true);
             sessionStorage.setItem('exitModalShown', 'true');
           }
         }, 100);
@@ -63,7 +57,6 @@ export const ExitIntentModal = () => {
 
     // Listen for custom email capture event
     const handleEmailCaptured = () => {
-      setHasSignedUp(true);
       // Close modal if it's currently open
       setIsOpen(false);
     };

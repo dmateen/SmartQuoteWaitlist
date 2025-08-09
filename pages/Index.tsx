@@ -149,32 +149,50 @@ const Pain = () => (
 );
 
 const Solution = () => (
-  <section className="container mx-auto py-16 animate-entry md:py-24">
-    <header className="mx-auto max-w-2xl text-center">
-      <h2 className="font-display text-3xl font-bold">Give customers a price. Get a qualified lead.</h2>
-      <p className="mt-2 text-muted-foreground">Instant price range for them. CRM-ready lead for you.</p>
-    </header>
-    <div className="mt-10 grid gap-4 md:grid-cols-3">
-      {[
-        ['They get an instant quote', 'Accurate price range immediately.', <Gauge key="i1"/>],
-        ['You get a pre-qualified lead', 'Name + email + job details → CRM/inbox.', <Mail key="i2"/>],
-        ['You close more jobs', 'Talk to ready-to-buy homeowners.', <CheckCircle key="i3"/>],
-      ].map(([title, desc, icon]) => (
-        <Card key={title as string} className="rounded-xl transition-all hover:shadow hover-scale shadow-lg shadow-green-500/20 border-green-100 dark:border-green-900/30">
-          <CardHeader className="flex-row items-center gap-3">
-            <div className="rounded-md bg-accent p-2 text-accent-foreground">{icon}</div>
-            <div>
-              <CardTitle className="text-lg">{title as string}</CardTitle>
-              <CardDescription>{desc as string}</CardDescription>
-            </div>
-          </CardHeader>
-        </Card>
-      ))}
-    </div>
-    <div className="mx-auto mt-8 max-w-xl">
-      <EmailCaptureForm eventId="solution_submit" ctaLabel="Join Waitlist" />
-    </div>
-  </section>
+    <section className="container mx-auto py-16 animate-entry md:py-24">
+        <header className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold">
+                Give customers a price. Get a qualified lead.
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+                Instant price range for them. CRM-ready lead for you.
+            </p>
+        </header>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+                [
+                    'They get an instant quote',
+                    'Accurate price range immediately.',
+                    <Gauge key="i1" />,
+                ],
+                [
+                    'You get a pre-qualified lead',
+                    'Name + email + job details → CRM/inbox.',
+                    <Mail key="i2" />,
+                ],
+                [
+                    'You close more jobs',
+                    'Talk to ready-to-buy homeowners.',
+                    <CheckCircle key="i3" />,
+                ],
+            ].map(([title, desc, icon]) => (
+                <Card
+                    key={title as string}
+                    className="rounded-xl transition-all hover:shadow hover-scale shadow-lg shadow-green-500/20 border-green-100 dark:border-green-900/30"
+                >
+                    <CardHeader className="flex-row items-center gap-3">
+                        <div className="rounded-md bg-accent p-2 text-accent-foreground">
+                            {icon}
+                        </div>
+                        <div>
+                            <CardTitle className="text-lg">{title as string}</CardTitle>
+                            <CardDescription>{desc as string}</CardDescription>
+                        </div>
+                    </CardHeader>
+                </Card>
+            ))}
+        </div>
+    </section>
 );
 
 const HowItWorks = () => (
