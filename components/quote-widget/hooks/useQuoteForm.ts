@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { QuoteFormData, QuoteState } from '@/types/quote';
+import { QuoteFormData } from '@/types/quote';
 import { INITIAL_FORM_DATA } from '@/lib/constants/quote';
 
 export const useQuoteForm = () => {

@@ -6,7 +6,6 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { StepProps } from '@/types/quote';
 import { StepHeader } from '../ui/StepHeader';
-import { RadioOption } from '../ui/RadioOption';
 import { NavigationButtons } from '../ui/NavigationButtons';
 import { QUOTE_STEPS, HOUSE_SIZE_OPTIONS } from '@/lib/constants/quote';
 import { cn } from '@/lib/utils';

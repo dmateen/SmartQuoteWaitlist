@@ -76,7 +76,7 @@ export const useAutoDemo = ({ updateFormData, resetFormData, setCurrentStep }: U
       setIsTyping(false);
       setIsAutoPlaying(false);
     }
-  }, [updateFormData, resetFormData, setCurrentStep, typeText, selectOption]);
+  }, [resetFormData, setCurrentStep, typeText, selectOption]);
 
   const stopAutoDemo = useCallback(() => {
     setIsAutoPlaying(false);

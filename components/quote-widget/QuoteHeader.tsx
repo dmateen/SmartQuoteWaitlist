@@ -88,7 +88,7 @@ export const QuoteHeader: React.FC<QuoteHeaderProps> = ({
           Experience how customers get instant, accurate roofing quotes
         </p>
         <div className="mt-2 text-xs text-blue-600 dark:text-blue-300">
-          👆 Click options below or use the "Watch Demo" button above
+          👆 Click options below or use the &quot;Watch Demo&quot; button above
         </div>
       </div>
     </>
