@@ -15,10 +15,9 @@ import { cn } from '@/lib/utils';
 
 type NavbarProps = { active?: string; scrolled?: boolean };
 const links = [
-  { id: 'how', label: 'How it works' },
-  { id: 'features', label: 'Features' },
-  { id: 'pricing', label: 'Pricing' },
-  { id: 'faq', label: 'FAQ' },
+    { id: 'how', label: 'How it works' },
+    { id: 'features', label: 'Features' },
+    { id: 'faq', label: 'FAQ' },
 ] as const;
 
 const Navbar = ({ active, scrolled }: NavbarProps) => (
